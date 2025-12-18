@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 // 1. Database Connection
-mongoose.connect('mongodb://127.0.0.1:27017/shopDB')
+mongoose.connect('mongodb+srv://kamili:root@cluster0.gbsihec.mongodb.net/?appName=Cluster0')
     .then(() => console.log("Successfully connected to MongoDB"))
     .catch(err => console.log("Connection error:", err));
 
