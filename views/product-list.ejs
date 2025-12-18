@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory | AutoParts Pro</title>
+    <style>
+        :root {
+            --main-white: #ffffff;
+            --main-black: #000000;
+            --main-orange: #ff6600;
+            --border-light: #eeeeee;
+        }
+
+        body {
+            background-color: var(--main-white);
+            color: var(--main-black);
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* HEADER & LOGO */
+        header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+        .logo-container img {
+            height: 60px; /* Adjust based on your logo size */
+            width: auto;
+            display: block;
+        }
+
+       h2 {
+    font-size: 2.5rem;
+    color: var(--main-black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+        .container-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* FILTER FORM - White Background, Black Borders */
+        form {
+            background-color: var(--main-white);
+            border: 2px solid var(--main-black);
+            padding: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        form input, form select {
+            border: 1px solid var(--main-black);
+            padding: 12px;
+            font-size: 14px;
+            background: var(--main-white);
+            flex: 1;
+            min-width: 180px;
+        }
+
+        form input:focus {
+            border-color: var(--main-orange);
+            outline: none;
+        }
+
+        .btn-filter {
+            background-color: var(--main-orange);
+            color: var(--main-black);
+            border: 2px solid var(--main-black);
+            padding: 12px 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-filter:hover {
+            background-color: var(--main-black);
+            color: var(--main-orange);
+        }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background: var(--main-white);
+            border: 1px solid var(--border-light);
+            padding: 0;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            border-color: var(--main-orange);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            color: var(--main-black);
+        }
+
+        .price-tag {
+            color: var(--main-orange);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .info-row {
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .stock-label {
+            font-weight: bold;
+            color: var(--main-black);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+           <h1>Auto Spare Parts</h1>
+
+    </header>
+    <h2> Our products</h2>
+    <div class="container-main">
+        <form action="/products" method="GET">
+            <input type="text" name="search" placeholder="Search by name...">
+            
+            <select name="category">
+                <option value="">All categories</option>
+                <% categories.forEach(cat => { %>
+                    <option value="<%= cat %>" <%= filters.category === cat ? 'selected' : '' %>><%= cat %></option>
+                <% }) %>
+            </select>
+
+            <select name="brand">
+                <option value="">All brands</option>
+                <% brands.forEach(b => { %>
+                    <option value="<%= b %>" <%= filters.brand === b ? 'selected' : '' %>><%= b %></option>
+                <% }) %>
+            </select>
+
+            <select name="carModel">
+                <option value="">All models</option>
+                <% carModels.forEach(m => { %>
+                    <option value="<%= m %>" <%= filters.carModel === m ? 'selected' : '' %>><%= m %></option>
+                <% }) %>
+            </select>
+
+            <select name="condition">
+                <option value="">All conditions</option>
+                <% conditions.forEach(c => { %>
+                    <option value="<%= c %>" <%= filters.condition === c ? 'selected' : '' %>><%= c %></option>
+                <% }) %>
+            </select>
+
+            <button class="btn-filter" type="submit">Apply Filters</button>
+        </form>
+
+        <div class="product-grid">
+            <% if (products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <a href="/products/<%= product._id %>" style="text-decoration: none; color: inherit;">
+                    <div class="product-card">
+                        <div class="image-container">
+                            <img src="<%= product.image %>" alt="<%= product.name %>">
+                        </div>
+                        <div class="card-body">
+                            <h3><%= product.name %></h3>
+                            <div class="price-tag">$<%= product.price %></div>
+                            <div class="info-row">
+                                <span>Category: <%= product.category %></span><br>
+                                <span class="stock-label">Stock: <%= product.stock %> units</span>
+                            </div>
+                        </div>
+                    </div> </a>
+                <% }) %>
+            <% } else { %>
+                <p>No products found matching your criteria.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

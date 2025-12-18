@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | AutoParts Pro</title>
+    <link rel="stylesheet" href="/css/product-list.css">
+    <style>
+        :root {
+            --main-white: #ffffff;
+            --main-black: #000000;
+            --main-orange: #ff6600;
+            --light-grey: #f9f9f9;
+        }
+
+        body {
+            background-color: var(--main-white);
+            color: var(--main-black);
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Hero Section - White background with black text */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: var(--main-white);
+            border-bottom: 2px solid #eee;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--main-black);
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: 900;
+            border: none; /* Resetting the border from product-list.css */
+        }
+
+        .hero h1 span {
+            color: var(--main-orange);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 20px;
+            background-color: var(--main-white);
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: var(--main-black);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Small orange underline for the title */
+        .about-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 5px;
+            background-color: var(--main-orange);
+            margin: 10px auto;
+        }
+
+        .about-content {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 50px;
+        }
+
+        .about-content strong {
+            color: var(--main-black);
+            border-bottom: 2px solid var(--main-orange);
+        }
+
+        /* Button - Black & Orange */
+        .btn-cta {
+            background-color: var(--main-black);
+            color: var(--main-white);
+            padding: 20px 45px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid var(--main-black);
+            transition: 0.3s all ease;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--main-orange);
+            border-color: var(--main-orange);
+            color: var(--main-black);
+            transform: translateY(-5px);
+        }
+
+        /* Partnership highlights */
+        .partners {
+            margin-top: 60px;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            color: #999;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .partners span {
+            color: var(--main-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+               <img src="/images/logo1.jpg" width="100px">
+
+        <h1>Auto Spare Parts</h1>
+    </header>
+
+    <div class="hero">
+        <h1>GEAR <span>UP.</span></h1>
+        <p>Your journey deserves the best components.</p>
+    </div>
+
+    <div class="container-main">
+        <section class="about-section">
+            <div class="about-container">
+                <h2>About Us</h2>
+                <p class="about-content">
+                    At Auto Spare Parts, we specialize in the <strong>full availability</strong> of high-performance automotive pieces. 
+                    From specialized engine units to everyday maintenance parts, we ensure that you never have to wait for the components you need. 
+                    Our strength lies in our network of <strong>multiple international cooperators</strong>, allowing us to source and 
+                    distribute parts with unmatched speed and reliability. No matter the make or model, our pieces are tested 
+                    to withstand the toughest road conditions.
+                </p>
+
+                <a href="/products" class="btn-cta">Explore All Pieces</a>
+
+                <div class="partners">
+                    <div><span>●</span> Premium Quality</div>
+                    <div><span>●</span> Global Network</div>
+                    <div><span>●</span> Direct Sourcing</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

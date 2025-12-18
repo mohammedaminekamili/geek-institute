@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= product.name %> | Details</title>
+    <link rel="stylesheet" href="/css/product-list.css">
+    <style>
+          h2 {
+    font-size: 2.5rem;
+    color: var(--main-black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+        .detail-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            padding: 20px;
+        }
+        .detail-image img {
+            width: 100%;
+            border: 4px solid var(--main-black);
+        }
+        .detail-info h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            border-left: 10px solid var(--main-orange);
+            padding-left: 20px;
+        }
+        .detail-price {
+            font-size: 2rem;
+            color: var(--main-orange);
+            font-weight: 900;
+            margin: 20px 0;
+        }
+        .specs {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--main-black);
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn-back:hover {
+            background: var(--main-orange);
+            color: var(--main-black);
+        }
+      
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        </div>
+        <h1 class="header-title">Auto Spare Parts</h1>
+    </header>
+    <h2> Product details</h2>
+
+    <div class="detail-container">
+        <div class="detail-image">
+            <img src="<%= product.image %>" alt="<%= product.name %>">
+        </div>
+        <div class="detail-info">
+            <h1><%= product.name %></h1>
+            <div class="detail-price">$<%= product.price %></div>
+            
+            <div class="specs">
+                <p><strong>Brand:</strong> <%= product.brand %></p>
+                <p><strong>Compatible Model:</strong> <%= product.carModel %></p>
+                <p><strong>Condition:</strong> <%= product.condition %></p>
+                <p><strong>Category:</strong> <%= product.category %></p>
+                <p><strong>Stock Availability:</strong> <%= product.stock %> units</p>
+            </div>
+
+      </div>
+      <a href="/products" class="btn-cta">Return to Inventory</a>  
+    </div>
+    
+</body>
+</html>
