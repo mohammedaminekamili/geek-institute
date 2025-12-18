@@ -63,7 +63,7 @@ const sampleProducts = [
         image: "/images/thumb.jpg"
     }
 ];
-mongoose.connect('mongodb://127.0.0.1:27017/shopDB')
+mongoose.connect('mongodb+srv://kamili:root@cluster0.gbsihec.mongodb.net/?appName=Cluster0')
     .then(async () => {
         console.log("Connected to Atlas for Seeding...");
         await Product.deleteMany({}); // Clears the collection
